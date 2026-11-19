@@ -1,0 +1,52 @@
+/* Vice Cover Studio — dark neon editor chrome. The cover itself is drawn on
+   canvas (see src/cover.js); this file only styles the editor around it. */
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: #0d0716; color: #f4eefc; font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+.topbar { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; padding: 18px 28px 6px; }
+.brand { font-size: 26px; font-weight: 900; letter-spacing: 0.02em; text-transform: uppercase; }
+.brand-mark { display: inline-block; background: linear-gradient(135deg, #ff7a3d, #ff2e88 55%, #7a0e6e); color: #fff; border-radius: 8px; padding: 2px 9px; margin-right: 8px; font-size: 20px; }
+.tagline { margin: 0; color: #b9a8d6; font-size: 14px; }
+.app { display: flex; gap: 28px; align-items: flex-start; justify-content: center; padding: 18px 28px; }
+.controls { width: 320px; flex: none; display: flex; flex-direction: column; gap: 18px; }
+.group { background: #1a0f2e; border: 1px solid #3a2358; border-radius: 12px; padding: 14px 16px; }
+.group h2 { margin: 0 0 10px; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #ff8ac2; }
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 14px; }
+input[type=text], select { font: inherit; padding: 9px 10px; border: 1px solid #5a3d85; border-radius: 8px; background: #120a20; color: #fff; }
+input[type=range] { accent-color: #ff2e88; }
+.file-btn { display: block; text-align: center; background: #ff2e88; color: #fff; font-weight: 700; border-radius: 8px; padding: 10px; cursor: pointer; }
+.file-btn input { display: none; }
+button { font: inherit; font-weight: 700; padding: 9px 12px; border: 1px solid #5a3d85; border-radius: 8px; background: #241640; color: #f4eefc; cursor: pointer; }
+button:hover { border-color: #ff2e88; }
+button.primary { width: 100%; background: linear-gradient(135deg, #ff7a3d, #ff2e88); border: 0; font-size: 16px; padding: 12px; }
+button.ghost { background: transparent; }
+.seg { display: flex; gap: 6px; }
+.seg button { flex: 1; padding: 8px 4px; font-size: 13px; }
+.seg button.active, .thumb.selected { background: #ff2e88; border-color: #ff2e88; color: #fff; }
+.sample-row { display: flex; gap: 6px; margin-top: 8px; }
+.sample-row button { flex: 1; font-size: 13px; padding: 8px 4px; }
+.thumbs { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+.thumbs:empty { display: none; }
+.thumb { text-align: left; }
+.hint { margin: 8px 0 0; color: #b9a8d6; font-size: 13px; font-weight: 400; }
+#status { min-height: 1.2em; color: #8ef0c8; font-size: 13px; }
+.preview { flex: 1; max-width: 760px; }
+.dropzone { position: relative; border: 2px dashed #4a2f73; border-radius: 14px; padding: 10px; }
+.dropzone.over { border-color: #ff2e88; background: rgba(255, 46, 136, 0.08); }
+#cover { display: block; width: 100%; height: auto; max-height: calc(100vh - 210px); object-fit: contain; border-radius: 8px; box-shadow: 0 12px 44px rgba(0, 0, 0, 0.55); cursor: grab; touch-action: none; }
+#cover:active { cursor: grabbing; }
+.drop-hint { position: absolute; right: 18px; bottom: 12px; margin: 0; padding: 4px 10px; border-radius: 20px; background: rgba(10, 4, 18, 0.72); color: #d9c8f2; font-size: 12px; pointer-events: none; }
+.foot { padding: 4px 28px 22px; color: #8d7aa8; font-size: 13px; text-align: center; }
+
+/* Screenshot scenes: cover alone fills the frame, editor keeps the chrome. */
+body.shot-cover .topbar, body.shot-cover .controls, body.shot-cover .foot, body.shot-cover .drop-hint { display: none; }
+body.shot-cover .app { padding: 0; display: block; }
+body.shot-cover .preview { max-width: none; }
+body.shot-cover .dropzone { border: 0; padding: 0; border-radius: 0; }
+body.shot-cover #cover { width: 100vw; height: 100vh; object-fit: contain; border-radius: 0; box-shadow: none; background: #0a0412; }
+
+@media (max-width: 900px) {
+  .app { flex-direction: column; }
+  .controls { width: 100%; }
+  .preview { max-width: none; width: 100%; }
+}

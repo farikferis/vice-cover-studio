@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Cover Studio — GTA-style cover art maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">VCS</span> Vice Cover Studio</div>
+  <p class="tagline">Your photos + a caption, made into poster-style cover art. Runs offline — nothing is uploaded.</p>
+</header>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <div class="group">
+      <h2>1 · Photos</h2>
+      <label class="file-btn">Choose photos (1–3)
+        <input id="photo" type="file" accept="image/*" multiple>
+      </label>
+      <div class="sample-row">
+        <button id="sample-pier" type="button">Sample: Pier</button>
+        <button id="sample-boulevard" type="button">Sample: Boulevard</button>
+        <button id="sample-both" type="button">Both samples</button>
+      </div>
+      <div id="thumbs" class="thumbs" aria-live="polite"></div>
+      <button id="clear-photos" type="button" class="ghost">Clear photos</button>
+    </div>
+
+    <div class="group">
+      <h2>2 · Layout</h2>
+      <div class="seg" role="group" aria-label="Layout">
+        <button type="button" data-layout="trio" class="active">Trio</button>
+        <button type="button" data-layout="hero">Hero + strip</button>
+        <button type="button" data-layout="quad">Quad</button>
+      </div>
+      <p class="hint">Click a panel in the preview to select it. Drag inside a panel to move its photo.</p>
+    </div>
+
+    <div class="group">
+      <h2>3 · Caption</h2>
+      <label>Title <input id="title" type="text" maxlength="40" value="Sunset Heist"></label>
+      <label>Subtitle <input id="subtitle" type="text" maxlength="40" value="Vice Nights"></label>
+    </div>
+
+    <div class="group">
+      <h2>4 · Grade &amp; crop</h2>
+      <div class="seg" role="group" aria-label="Colour grade">
+        <button type="button" data-grade="sunset" class="active">Sunset</button>
+        <button type="button" data-grade="neon">Neon</button>
+        <button type="button" data-grade="noir">Noir</button>
+      </div>
+      <label>Zoom <input id="zoom" type="range" min="100" max="300" value="100" step="5"></label>
+      <p id="panel-label" class="hint" role="status"></p>
+    </div>
+
+    <div class="group">
+      <h2>5 · Export</h2>
+      <label>Size
+        <select id="export-size">
+          <option value="1080x1080" selected>Square 1080 x 1080</option>
+          <option value="1080x1350">Portrait 1080 x 1350</option>
+          <option value="1920x1080">Wide 1920 x 1080</option>
+        </select>
+      </label>
+      <button id="export" type="button" class="primary">Export PNG</button>
+      <p id="status" role="status"></p>
+    </div>
+  </section>
+
+  <section class="preview" aria-label="Cover preview">
+    <div id="dropzone" class="dropzone">
+      <canvas id="cover" width="1080" height="1080" aria-label="The cover preview"></canvas>
+      <p class="drop-hint">Drop photos here</p>
+    </div>
+  </section>
+</main>
+<footer class="foot">An original cover maker. No Rockstar logo, artwork or font — lettering is a bold system-font stack.</footer>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
